@@ -55,7 +55,7 @@ static const struct arg args[] = {
 	{ wifi_perc, " \ue21a %s", "wlp2s0" },
 	{ wifi_essid, " %s ", "wlp2s0" },
     { run_command, " \ue05d%4s ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
-    { run_command, " \ue1c3%2s  ", "xbacklight -get |  awk '{print int($1)}'" },
+    { run_command, " \ue1c3%2s  ", "light -G | awk '{printf \"%3.0f\", $1}' " },
 	{ cpu_perc, "\ue027%s  ", NULL    },
 	{ battery_state, "%s", "BAT1"    },
 	{ battery_perc, "%3s%% ", "BAT1"    },
