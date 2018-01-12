@@ -26,18 +26,18 @@ wifi_perc(const char *iface)
 	fp = fopen(path, "r");
 	if (fp == NULL) {
 		warn("Failed to open file %s", path);
-		return NULL;
+		return "-";
 	}
 	p = fgets(status, 5, fp);
 	fclose(fp);
 	if(!p || strcmp(status, "up\n") != 0) {
-		return NULL;
+		return "-";
 	}
 
 	fp = fopen("/proc/net/wireless", "r");
 	if (fp == NULL) {
 		warn("Failed to open file /proc/net/wireless");
-		return NULL;
+		return "-";
 	}
 
 	for (i = 0; i < 3; i++) {
@@ -46,10 +46,10 @@ wifi_perc(const char *iface)
 	}
 	fclose(fp);
 	if (i < 2 || !p)
-		return NULL;
+		return "-";
 
 	if ((datastart = strstr(buf, iface)) == NULL)
-		return NULL;
+		return "-";
 
 	datastart = (datastart+(strlen(iface)+1));
 	sscanf(datastart + 1, " %*d   %d  %*d  %*d		  %*d	   %*d		%*d		 %*d	  %*d		 %*d", &cur);
@@ -83,7 +83,7 @@ wifi_essid(const char *iface)
 	close(sockfd);
 
 	if (strcmp(id, "") == 0)
-		return NULL;
+		return "N/A";
 	else
 		return id;
 }
