@@ -52,12 +52,12 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function format          argument */
 	{ run_command, "%s", "~/bin/mpdsong.sh" },
-	{ wifi_perc, " \ue21a %s", "wlp2s0" },
-	{ wifi_essid, " %s ", "wlp2s0" },
+	{ wifi_perc, " \ue21a %s", "wlp3s0" },
+	{ wifi_essid, " %s ", "wlp3s0" },
     { run_command, " \ue05d%4s ", "amixer sget Master | awk -F\"[][]\" '/%/ { print $2 }' | head -n1" },
     { run_command, " \ue1c3%2s  ", "light -G | awk '{printf \"%3.0f\", $1}' " },
 	{ cpu_perc, "\ue027%s  ", NULL    },
-	{ battery_state, "%s", "BAT1"    },
-	{ battery_perc, "%3s%% ", "BAT1"    },
+	{ battery_state, "%s", "BAT0"    },
+	{ battery_perc, "%3s%% ", "BAT0"    },
 	{ datetime, "%s", " \ue266 %d/%m  \ue018 %H:%M " },
 };
